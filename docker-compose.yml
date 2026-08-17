@@ -28,10 +28,12 @@ services:
 
   web-server:
     image: lms-web
-    build: webapp/
+    build: 
+      context: webapp/
+      args:
+        VITE_API_URL: http://18.119.28.237:8080/api
     environment:
       - MODE=local
-      - API_URL=http://api-server:8080
     ports:
       - "80:80"
     depends_on:
